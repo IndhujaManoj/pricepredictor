@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Opportunities by Location</title>
+ 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f7;
+      background :url(http://globalweet.com/wp-content/uploads/2019/11/we-are-hiring-1080x675-1024x640.jpeg);
+      background-repeat: no-repeat;
+      object-fit: cover;
+      height: 100%;
+            width: 100%;
+          
+            background-size: cover; /* Ensures the image covers the whole page */
+            background-position: center 20%; /* Centers the image */
+            background-repeat: no-repeat;
+            
+      
+      
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    .back-button {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            text-decoration: none;
+            margin-left: 700px;
+        }
+        .back-button:hover {
+            background: linear-gradient(135deg, #45a049, #2E7D32);
+            transform: translateY(-3px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+    .result-box {
+      font-size: 16px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fafafa;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Select a Location to See Job Opportunities</h2>
+    <select id="location" onchange="showJobs()">
+        <option value="">-- Select a location --</option>
+        <option value="T. Nagar">T. Nagar</option>
+        <option value="Guindy">Guindy</option>
+        <option value="OMR">OMR (IT Corridor)</option>
+        <option value="Ambattur">Ambattur</option>
+        <option value="Nungambakkam">Nungambakkam</option>
+        <option value="Perungudi">Perungudi</option>
+        <option value="Velachery">Velachery</option>
+        <option value="Adyar">Adyar</option>
+        <option value="Anna Nagar">Anna Nagar</option>
+        <option value="Tambaram">Tambaram</option>
+        <option value="Mylapore">Mylapore</option>
+        <option value="Kodambakkam">Kodambakkam</option>
+        <option value="Perambur">Perambur</option>
+        <option value="Thiruvanmiyur">Thiruvanmiyur</option>
+        <option value="Kilpauk">Kilpauk</option>
+        <option value="Pallavaram">Pallavaram</option>
+        <option value="Chromepet">Chromepet</option>
+        <option value="Madipakkam">Madipakkam</option>
+        <option value="Porur">Porur</option>
+        <option value="Avadi">Avadi</option>
+    </select>
+
+    <div id="jobResults" class="result-box">Select a location to see job sectors.</div>
+</div>
+
+<script>
+    function showJobs() {
+        let location = document.getElementById("location").value;
+        let jobResults = document.getElementById("jobResults");
+        
+        let jobData = {
+            "T. Nagar": ["Retail & Sales", "Customer Service", "Textile Industry"],
+            "Guindy": ["Manufacturing", "Automobile Industry", "Pharmaceuticals"],
+            "OMR": ["IT & Software", "Startup Culture", "BPO & Call Centers"],
+            "Ambattur": ["Industrial Manufacturing", "Mechanical Engineering", "Textile Industry"],
+            "Nungambakkam": ["Banking & Finance", "Education", "Media & Journalism"],
+            "Perungudi": ["IT & Software", "E-commerce", "Marketing Agencies"],
+            "Velachery": ["Education", "Healthcare", "IT & Startups"],
+            "Adyar": ["Education", "Healthcare", "Startup Ecosystem"],
+            "Anna Nagar": ["Real Estate", "Healthcare", "Retail & Business"],
+            "Tambaram": ["Education", "IT Services", "Banking & Finance"],
+            "Mylapore": ["Tourism & Hospitality", "Arts & Culture", "Legal Services"],
+            "Kodambakkam": ["Film Industry", "Media & Journalism", "Real Estate"],
+            "Perambur": ["Automobile Services", "Retail & Small Businesses", "Government Jobs"],
+            "Thiruvanmiyur": ["IT & Software", "Marketing & Advertising", "Healthcare"],
+            "Kilpauk": ["Healthcare", "Education", "Real Estate"],
+            "Pallavaram": ["Logistics", "Warehousing", "Retail & Sales"],
+            "Chromepet": ["Education", "Retail Business", "Healthcare"],
+            "Madipakkam": ["IT Support", "Small Businesses", "Education"],
+            "Porur": ["IT & Software", "Healthcare", "Pharmaceuticals"],
+            "Avadi": ["Defense Services", "Industrial Manufacturing", "Retail Sector"]
+        };
+
+        if (location) {
+            // Create a string of job sectors dynamically
+            jobResults.innerHTML = `<strong>Top Job Sectors in ${location}:</strong><br>` + 
+                jobData[location].map(job => `- ${job}`).join("<br>");
+        } else {
+            jobResults.innerHTML = "Select a location to see job sectors.";
+        }
+    }
+</script>
+<a href="index.html" class="back-button">Back to Home</a>
+</body>
+</html>

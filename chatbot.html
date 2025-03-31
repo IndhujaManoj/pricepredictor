@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Land Buying Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            margin-top: 20opx;
+        }
+        #chat-container {
+            width: 400px;
+            
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 20px;
+            background-color: cornsilk;
+        }
+        #messages {
+            height: 300px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        #user-input {
+            width: 80%;
+            padding: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            margin-left: 5px;
+        }
+        body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f7;
+      background :url(https://amandabrown.net/wp-content/uploads/2023/07/Crucial-Questions-To-Ask-When-Buying-Land.png);
+      background-repeat: no-repeat;
+      object-fit: cover;
+      height: 100%;
+            width: 100%;
+          
+            background-size: cover; /* Ensures the image covers the whole page */
+            background-position: center 20%; /* Centers the image */
+            background-repeat: no-repeat;
+            
+      
+      
+    }
+    .back-button {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #ff0000, #ff0000);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .back-button:hover {
+            background: linear-gradient(135deg, #ff0000, #55ff00);
+            transform: translateY(-3px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h2>Land Buying Assistant</h2>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <input type="text" id="user-input" placeholder="Ask about land options...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            let inputField = document.getElementById("user-input");
+            let message = inputField.value.trim();  // Trim spaces from the message
+
+            if (!message) return;  // If message is empty, do nothing
+
+            let chatBox = document.getElementById("messages");
+            chatBox.innerHTML += `<div><strong>You:</strong> ${message}</div>`;
+            inputField.value = "";
+            
+            setTimeout(() => {
+                let reply = getChatbotReply(message);
+                chatBox.innerHTML += `<div><strong>Vista:</strong> ${reply}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1000);
+        }
+
+        function getChatbotReply(message) {
+            let lowerMessage = message.toLowerCase();
+
+            console.log("User's Message:", lowerMessage);  // Log the message to check
+
+            // Handling specific phrases with numbers or conditions
+            if (lowerMessage.includes("cheap") || lowerMessage.includes("low budget")) {
+                return "For budget-friendly options in Chennai, consider *Avadi, Perungalathur, Tambaram, and Guduvanchery*. These areas are developing and offer reasonable land prices.";
+            } else if (lowerMessage.includes("city") || lowerMessage.includes("urban")) {
+                return "If you prefer city life, areas like *T. Nagar, Adyar, and Anna Nagar* have great connectivity and amenities, though they may be expensive.";
+            } else if (lowerMessage.includes("investment")) {
+                return "For long-term investment, consider *Oragadam, Sriperumbudur, and Kelambakkam*. These areas are growing rapidly with increasing demand.";
+            } else if (lowerMessage.includes("health")) {
+                return "If healthcare facilities are important, look for land in *Velachery, Alwarpet, and Kilpauk*, where hospitals like Apollo and Fortis are nearby.";
+            } else if (lowerMessage.includes("transportation") || lowerMessage.includes("metro")) {
+                return "For excellent connectivity, *Guindy, Ashok Nagar, and Koyambedu* are great choices due to metro stations, bus routes, and railway stations.";
+            } else if (lowerMessage.includes("peaceful") || lowerMessage.includes("quiet") || lowerMessage.includes("sleep")) {
+                return "If you want a peaceful environment, consider *ECR (East Coast Road), Madambakkam, or Vandalur*, which offer less noise and pollution.";
+            } else if (lowerMessage.includes("luxury") || lowerMessage.includes("costly") || lowerMessage.includes("high-end")) {
+                return "For high-end luxury properties, check out *Poes Garden, Nungambakkam, or Besant Nagar*. These areas have premium properties and high-profile neighborhoods.";
+            } else if (lowerMessage.includes("below 50 lakh") || lowerMessage.includes("under 50 lakh")) {
+                return "For a budget below 50 lakhs, consider *Avadi, Perungalathur, Tambaram, and Guduvanchery*. These areas offer affordable land.";
+            } else if (lowerMessage.includes("1 crore") || lowerMessage.includes("between 1 and 2 crores")) {
+                return "With a budget of 1 to 2 crores, explore *Velachery, Medavakkam, and Madipakkam*. These areas have good amenities and connectivity.";
+            } else if (lowerMessage.includes("above 5 crores") || lowerMessage.includes("5 crore plus")) {
+                return "For high-end properties above 5 crores, check out *Poes Garden, Nungambakkam, and Besant Nagar*. These are premium residential areas.";
+            } else if (lowerMessage.includes("budget") || lowerMessage.includes("price range")) {
+                return "Please specify your budget range (e.g., 'below 50 lakhs', '1-2 crores'), and I’ll suggest suitable locations in Chennai.";
+            } else if (lowerMessage.includes("hi") || lowerMessage.includes("hello")) {
+                return "Hello! How can I help you find the best land options in Chennai?";
+            } else if (lowerMessage.includes("thank you") || lowerMessage.includes("ok")) {
+                return "We are glad to help, ask if you have more doubts..";
+            } else if (lowerMessage === "1") {
+                return "It seems you're asking about 1. Could you please clarify if you're referring to a budget or something else?";
+            } else {
+                return "Can you please specify your budget, preferred location, or any specific requirement like healthcare, transportation, or investment purpose?";
+            }
+        }
+    </script>
+    <a href="index.html" class="back-button">Back to Home</a>
+</body>
+</html>

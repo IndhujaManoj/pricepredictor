@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age of Land - Land Price Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('data:image/jpeg;base64,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') no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .main-content {
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .content-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            margin: 20px auto;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background: linear-gradient(135deg, #45a049, #2E7D32);
+            transform: translateY(-3px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 30px;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Age of Land in Chennai Localities</h1>
+    <p>Find out how many years land has been sold in various areas.</p>
+</header>
+
+<div class="main-content">
+    <div class="content-box">
+        <h2>Years of Land Sales in Different Locations</h2>
+        <table>
+            <tr>
+                <th>Location</th>
+                <th>Years Land Has Been Sold</th>
+            </tr>
+            <tr>
+                <td>Anna Nagar</td>
+                <td>35 years</td>
+            </tr>
+            <tr>
+                <td>Adyar</td>
+                <td>40 years</td>
+            </tr>
+            <tr>
+                <td>T. Nagar</td>
+                <td>45 years</td>
+            </tr>
+            <tr>
+                <td>Velachery</td>
+                <td>30 years</td>
+            </tr>
+            <tr>
+                <td>Tambaram</td>
+                <td>50 years</td>
+            </tr>
+            <tr>
+                <td>Nungambakkam</td>
+                <td>55 years</td>
+            </tr>
+            <tr>
+                <td>Mylapore</td>
+                <td>60 years</td>
+            </tr>
+            <tr>
+                <td>Kodambakkam</td>
+                <td>38 years</td>
+            </tr>
+            <tr>
+                <td>Guindy</td>
+                <td>45 years</td>
+            </tr>
+            <tr>
+                <td>Perambur</td>
+                <td>42 years</td>
+            </tr>
+        </table>
+
+        <a href="index.html" class="back-button">Back to Home</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Land Price Prediction. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+
+
+   body {
+    font-family: Arial, sans-serif;
+    background: url('background.jpg') no-repeat center center/cover;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    text-align: center;
+    color: white;
+}
+header {
+    background: rgba(0, 128, 0, 0.8);
+    padding: 20px;
+}
+main {
+    margin: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    display: inline-block;
+    border-radius: 10px;
+    color: black;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+select, input, button {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    background: green;
+    color: white;
+    cursor: pointer;
+}
+.amenities {
+    margin: 20px;
+}
+.buttons button {
+    background: darkgreen;
+    color: white;
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+footer {
+    background: black;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Land Price Prediction</title>
+    
+      <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('data:image/jpeg;base64,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') no-repeat center center fixed;
+            background-size: cover;
+            background-position: fixed;
+        }
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .main-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius:15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 60%;
+            margin: 20px auto;
+            transition: transform 0.3s;
+            padding-right: 2rem;
+        }
+        .form-container:hover {
+            transform: scale(1.02);
+        }
+        .form-container input[type="number"],
+        .form-container select,
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .form-container button {
+            background: linear-gradient(135deg, #4CAF50, #388E3C);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .form-container button:hover {
+            background: linear-gradient(135deg, #45a049, #2E7D32);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .amenities-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .amenities-container button {
+            padding: 15px 25px;
+            margin: 10px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+        .amenities-container button:hover {
+            background: linear-gradient(135deg, #45a049, #2E7D32);
+            transform: translateY(-3px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
+        }
+        /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style for the logout container */
+.logout-container {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the logo */
+.logo {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+/* Style for the logout button */
+.logout-button {
+    padding: 8px 15px;
+    background-color: #FF5733;  /* Button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-button:hover {
+    background-color: #C70039;  /* Hover effect */
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Land Price Prediction</h1>
+    <p>Predict the value of land based on location, area, and amenities.</p>
+    <div class="logout-container">
+        
+        <button class="logout-button" onclick="logout()">Logout</button>
+    </div>
+    <script>
+        function logout() {
+          
+            alert('Logging out...');
+            window.location.href = 'login.html';
+        }
+    </script>
+</header>
+
+
+<div class="main-content">
+    <h2>Enter the details to predict land price</h2>
+    <div class="form-container">
+        <form id="predictionForm">
+            <label for="location">LOCATION:</label>
+            <select id="location" name="location" required>
+                <option value="">Select a location</option>
+                <option value="AnnaNagar">Anna Nagar</option>
+                <option value="Adyar">Adyar</option>
+                <option value="TNagar">T. Nagar</option>
+                <option value="Velachery">Velachery</option>
+                <option value="Tambaram">Tambaram</option>
+                <option value="Nungambakkam">Nungambakkam</option>
+                <option value="Mylapore">Mylapore</option>
+                <option value="Kodambakkam">Kodambakkam</option>
+                <option value="Guindy">Guindy</option>
+                <option value="Perambur">Perambur</option>
+            </select>
+
+            <label for="area">AREA (in sq. meters):</label>
+            <input type="number" id="area" name="area" placeholder="Enter the area" required>
+
+            <button type="submit">Predict Price</button>
+            <div id="output" class="output">
+                <h3>Predictive Price: <span id="price">--</span></h3>
+              </div>
+        </form>
+    </div>
+
+    <div class="amenities-container">
+        <h3>Explore Land Amenities:</h3>
+        <button onclick="window.location.href='Healthy lifestyle.html'">Healthy lifestyle</button>
+        <button onclick="window.location.href='Age of Land.html'">Age of Land</button>
+        <button onclick="window.location.href='Natural Calamities.html'">Natural Calamities</button>
+        <button onclick="window.location.href='Legal Documents.html'">Legal Documents</button>
+        <button onclick="window.location.href='Job Opportunities.html'">Job opportunities</button>
+        <button onclick="window.location.href='chatbot.html'">Consult AI</button>
+    </div>
+</div>
+<script src="script.js"></script>
+<footer>
+    <p>&copy; 2025 Land Price Prediction. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
